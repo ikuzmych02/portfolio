@@ -46,8 +46,7 @@ int card, suit;
 
 //  Random number seed.
 //      try  43227 (player 1 has 4 10s)
-int seed = 43227;
-
+int seed = 1;
 // Part 1.2
 int t1, t2;
 
@@ -97,10 +96,7 @@ int pairs(int M, unsigned char hand[]);
 ***********************************************************************/
 int main()
 {
-/************************************************************************
-                    Start code here                                     */
-
-/************************************************************************
+/**
  *
  * PROBLEM 1,  C-Basics
  *
@@ -109,14 +105,13 @@ int main()
 // initialize random numbers.
 //  change the seed for testing.  Use this value to compare results with
 #ifdef VISUALC
-srand(seed);
+
 #endif
 #ifdef LINUX
 // srandom(seed);
 #endif
-
 print_str("Random seed: "); print_int(seed); print_newl();
-
+srand(5647);  // trips and a pair in hand 0 on my computer (full house 7s over 6s)
 
 // 1.1  Write a code to print out the 10 integers between 1 and 10 on separate lines:
 print_str("Problem 1.1 Test Results: \n");
@@ -369,8 +364,8 @@ void fill(shuffle deck[N_DECK][2]) {
 		// while loop will check the current cards in the deck
 		// to see if it can put in the current random #
 		while (check_arr(i, suit, card, deck) == 1) {
-			suit = randN(4); // generate a random suit
-			card = randN(13); // generate a random card
+			suit = rand() % 4 + 1; // generate a random suit
+			card = rand() % 13 + 1; // generate a random card
 		}
    deck[i][0] = card;
    deck[i][1] = suit;
@@ -433,26 +428,21 @@ int gcard(unsigned char card) {
    int card_int;
    card_int = (0x00) | (card >> 4);
 
-
-   for (int i = 1; i <= 13; i++) {
-      if (card_int == i) 
-      return i;
+   if ((card_int > 13) || (card_int < 1)) {
+      return CARD_ERROR;
    }
-
-   return CARD_ERROR; // if it does not match any of these cases
-   }
+   return card_int;
+}
 
 int gsuit(unsigned char card) {
    int suit_int;
    
    suit_int = 0x0F & card; // bits: 00001111 & suit = 0000(suit)
 
-   for (int i = 1; i <= 4; i++) {
-      if (suit_int == i)
-      return i;
+   if ((suit_int > 4) || (suit_int < 1)) {
+      return CARD_ERROR;
    }
-   
-   return CARD_ERROR; // if it does not match any of these cases
+   return suit_int;
 }
 
 
@@ -498,65 +488,81 @@ void printhand(int M, unsigned char* hand, char* buff1) {
 		names(gcard(hand[i]), gsuit(hand[i]), buff1);
 		print_str(buff1);
 		print_newl();
-		memset(buff1, 0, strlen(buff1));
+		memset(buff1, 0, strlen(buff1)); // reset buff
 	}
 }
 
-
-int pairs(int M, unsigned char hand[]) {
+int pairs(int M, unsigned char hand[]) { // 8 bits (top 4 represent card, bottom 4 represent suit)
 	int pairCount = 0;
-	int pairCheck = 0;
-	for (int i = 0; i < M; i++) {
-		for (int j = i; j < M; j++) {
-			
-			if ((hand[i] & 0xF0) == (hand[j] & 0xF0)) {
-				pairCheck++;
-			}
-		}
-		if (pairCheck == 2) {
-			pairCount++; 
-		}
-		pairCheck = 0;
-	}
-	return pairCount;
+   int pairCheck = 0;
+   int number[M];
+   
+   // fill in new array with card int values
+   for (int i = 0; i < M; i++) {
+      number[i] = (0x0F & (hand[i] >> 4));
+   }
+   
+   for (int i = 1; i <= 13; i++) {
+      for (int j = 0; j < M; j++) {
+         if (number[j] == i) {
+            pairCheck++;
+         }
+      }
+      if (pairCheck == 2) {
+         pairCount++;
+      }
+      pairCheck = 0;
+   }
+   return pairCount;
 }
-
 
 int trip_s(int M, unsigned char hand[]) {
-	int tripsCount = 0;
-	int tripsCheck = 0;
-	for (int i = 0; i < M; i++) {
-		for (int j = 0; j < M; j++) {
-			
-			if ((hand[i] & 0xF0) == (hand[j] & 0xF0)) {
-				tripsCheck++;
-			}
-		}
-		if (tripsCheck == 3) {
-			tripsCount++; 
-		}
-		tripsCheck = 0;
-	}
-	return tripsCount;
+   int tripsCount = 0;
+   int tripsCheck = 0;
+   int number[M];
+   
+   // fill in new array with card int values
+   for (int i = 0; i < M; i++) {
+      number[i] = (0x0F & (hand[i] >> 4));
+   }
+   
+   for (int i = 1; i <= 13; i++) {
+      for (int j = 0; j < M; j++) {
+         if (number[j] == i) {
+            tripsCheck++;
+         }
+      }
+      if (tripsCheck == 3) {
+         tripsCount++;
+      }
+      tripsCheck = 0;
+   }
+   return tripsCount;
 }
 
 
 int four_kind(int M, unsigned char hand[]) {
-	int quadsCount = 0;
-	int quadsCheck = 0;
-	for (int i = 0; i < M; i++) {
-		for (int j = 0; j < M; j++) {
-			
-			if ((hand[i] & 0xF0) == (hand[j] & 0xF0)) {
-				quadsCheck++;
-			}
-		}
-		if (quadsCheck == 4) {
-			quadsCount++; 
-		}
-		quadsCheck = 0;
-	}
-	return quadsCount;
+   int quadsCount = 0;
+   int quadsCheck = 0;
+   int number[M];
+   
+   // fill in new array with card int values
+   for (int i = 0; i < M; i++) {
+      number[i] = (0x0F & (hand[i] >> 4));
+   }
+   
+   for (int i = 1; i <= 13; i++) {
+      for (int j = 0; j < M; j++) {
+         if (number[j] == i) {
+            quadsCheck++;
+         }
+      }
+      if (quadsCheck == 4) {
+         quadsCount++;
+      }
+      quadsCheck = 0;
+   }
+   return quadsCount;
 }
 
 
