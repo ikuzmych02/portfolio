@@ -3,7 +3,7 @@
  *      EE474 introductory C programming assignment #1
  *      Spring 2022
  *
- *     Student Name: Illya Kuzmych STUDENT NAME and ID# Illya Kuzmych 2127069
+ *     Student Name: Illya Kuzmych
  *
  */
 
