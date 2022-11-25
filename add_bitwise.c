@@ -7,6 +7,8 @@
  * 
  * @param x First integer to add
  * @param y Second integer to add
+ * 
+ * @return x Result of bitwise addition
 */
 int addBitwise(int x, int y) {
 
