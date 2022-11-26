@@ -7,7 +7,6 @@ int main(int argc, char **argv) {
     for (int i = 1; i < argc; i++) {
         binaryRepresentation(strtol(argv[i], NULL, 10)); // 000...01001
     }
-    //binaryRepresentation(9);
     return 0;
 }
 
@@ -19,10 +18,8 @@ int main(int argc, char **argv) {
 */
 void binaryRepresentation(int x) {
     char* str = (char*) malloc(sizeof(int) * 8 + 1); // allocate memory for the string
-    char c;
     for (int i = 0; i < sizeof(int) * 8; i++) {
         str[i] = (((1 << (31 - i)) & x) >> (31 - i)) + '0';
-        c = str[i];
     }
     printf("Binary representation of %d is %s\n", x, str);
     free(str);
