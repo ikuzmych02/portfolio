@@ -16,6 +16,17 @@ int main() {
     return 0;
 }
 
+/**
+ * This function swaps two variables without using a temp.
+ * For example: x = 10, y = 20
+ * x = 10 + 20 -> 30
+ * y = 30 - 20 -> 10. y now equal to 10
+ * x = 30 - 10 -> 20. x now equal to 20
+ * 
+ * @param x   Integer pointer to first input variable
+ * @param y   Integer pointer to second input variable
+ * 
+*/
 void swapVariables(int *x, int *y) {
 
     *x = *x + *y;
