@@ -2,10 +2,19 @@
 
 void binaryRepresentation(int x);
 
+/**
+ * Main loop that takes inputs from
+ * user over command line and uses those
+ * 
+ * @param argc Argument count
+ * @param argv Array of char pointers (array of strings)
+ *
+ * @return 0 Function exited successfully
+ */
 int main(int argc, char **argv) {
 
     for (int i = 1; i < argc; i++) {
-        binaryRepresentation(strtol(argv[i], NULL, 10)); // 000...01001
+        binaryRepresentation(strtol(argv[i], NULL, 10));
     }
     return 0;
 }
