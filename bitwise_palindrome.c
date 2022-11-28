@@ -4,8 +4,6 @@
 
 #define TRUE 1
 #define FALSE 0
-#define MSB_MASK (0x80000000)
-#define LSB_MASK (0x00000001)
 
 /**
  * Implementation will assume unsigned int.
