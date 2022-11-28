@@ -16,7 +16,7 @@ int isBitPalindrome(unsigned int num) {
     unsigned int reversed = 0;
 
     for (int i = 0; i < sizeof(unsigned int) * 4; i++) { // O(n/2) where n is the size of the input
-        reversed = reversed | ((num >> i) & 1) << (31 - i);
+        reversed = reversed | (((num >> i) & 1) << (31 - i));
     }
 
     printf("%x\n", reversed);
