@@ -10,7 +10,7 @@ In this repository you will find code I have written and utilized for a variety 
 
 ## C-algorithms:
   In this branch, I have many different embedded system related C algorithms. For example,
-  an algorithm that counts the number of set bits in an integer.
+  an algorithm that counts the number of set bits in an integer, or an algorithm which reverses every pair of bits in an integer
   
 ## Frogger
   In this branch, I have the code-base for my "Frogger" project implemented with a DE1_SoC
