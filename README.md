@@ -19,3 +19,6 @@ In this repository you will find code I have written and utilized for a variety 
   
 ## Pong
   In this branch, I have the code-base for a project which focused on implementing algorithms on hardware (DE1_SoC FPGA) to implement a user-controlled game. We utilized   Bresenham's line algorithm to map out the trajectory of the pong ball, and a custom detection algorithm to change the trajectory/slope of the ball on impact with the     user-controlled paddles which were controlled by an 8-bit Nintendo controller
+
+## Proximity Sensor
+  In this branch, I have the code and freeRTOS drivers for Arduino which we utilized to build a fail-safe proximity sensor system for construction workers who work in     the dark. We utilized task creation and a pre-emptive scheduler to assign task priorities and build our task schedule.
