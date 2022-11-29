@@ -5,6 +5,8 @@ In this repository you will find code I have written and utilized for a variety 
 
 ## Here is what each branch is and what is contained within it:
 
+## Single-cycle CPU
+  This branch contains code written in SystemVerilog that includes all the functionality necessary for a basic, 64-bit single-cycle CPU, including the register file,     ALU, branching, data memory, instruction memory, and the program counter
 
 ## C-algorithms:
   In this branch, I have many different embedded system related C algorithms. For example,
