@@ -22,3 +22,6 @@ In this repository you will find code I have written and utilized for a variety 
 
 ## Proximity Sensor
   In this branch, I have the code and freeRTOS drivers for Arduino which we utilized to build a fail-safe proximity sensor system for construction workers who work in     the dark. We utilized task creation and a pre-emptive scheduler to assign task priorities and build our task schedule.
+
+## Rational Number Calculator
+  This branch contains C++ code for a rational number calculator. 
