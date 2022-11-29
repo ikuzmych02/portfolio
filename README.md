@@ -25,3 +25,8 @@ In this repository you will find code I have written and utilized for a variety 
 
 ## Rational Number Calculator
   This branch contains C++ code for a rational number calculator. 
+
+## Simple Poker Game
+  This branch contains C code and logic to implement a basic poker game, including deck shuffling and hand detection.
+  
+  
