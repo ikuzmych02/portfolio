@@ -1,3 +1,2 @@
-# Welcome to my code portfolio!
-My name is Illya Kuzmych and I am a senior at the University of Washington in Seattle Washington
-In this repository you will find code I have written and utilized for a variety of projects
+# Welcome to C-algorithms!
+This branch has a variety of many different C algorithms, from the most simple ones such as counting set bits, to more complex ones such as using dynamic programming to solve a maximum sum of non-adjacent numbers in an array
