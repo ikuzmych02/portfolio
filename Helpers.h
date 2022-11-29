@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdint.h>
 
 #define ONE_MASK 0x00000001
 #define MK_VAR(n) result##n
