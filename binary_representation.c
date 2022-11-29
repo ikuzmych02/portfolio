@@ -27,8 +27,8 @@ int main(int argc, char **argv) {
 */
 void binaryRepresentation(int x) {
     char* str = (char*) malloc(sizeof(int) * 8 + 1); // allocate memory for the string
-    for (int i = 0; i < sizeof(int) * 8; i++) {
-        str[i] = (((1 << (31 - i)) & x) >> (31 - i)) + '0';
+    for (int i = sizeof(int) * 8 - 1; i >= 0; i--) {
+        str[i] = ((x >> (31 - i)) & 1) + '0';
     }
     printf("Binary representation of %d is %s\n", x, str);
     free(str);
