@@ -16,3 +16,6 @@ In this repository you will find code I have written and utilized for a variety 
   
 ## Mazes
   In this branch, I have the code-base for an algorithmic maze solver. First, we carve out a maze utilizing Kruskal's Maze Carver. We then utilize Dijkstra's to find the   shortest, existing path
+  
+## Pong
+  In this branch, I have the code-base for a project which focused on implementing algorithms on hardware (DE1_SoC FPGA) to implement a user-controlled game. We utilized   Bresenham's line algorithm to map out the trajectory of the pong ball, and a custom detection algorithm to change the trajectory/slope of the ball on impact with the     user-controlled paddles which were controlled by an 8-bit Nintendo controller
