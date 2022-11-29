@@ -13,3 +13,6 @@ In this repository you will find code I have written and utilized for a variety 
 ## Frogger
   In this branch, I have the code-base for my "Frogger" project implemented with a DE1_SoC
   FPGA. This code is entirely in SystemVerilog and utilizes logic gates and LED drivers to create the game!
+  
+## Mazes
+  In this branch, I have the code-base for an algorithmic maze solver. First, we carve out a maze utilizing Kruskal's Maze Carver. We then utilize Dijkstra's to find the   shortest, existing path
