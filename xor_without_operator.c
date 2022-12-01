@@ -15,6 +15,15 @@ int main() {
     return 0;
 }
 
+/**
+ * This function takes in two integers and find their XOR
+ * without using the ^ XOR operator
+ * 
+ * @param a       Input integer 1
+ * @param b       Input integer 2
+ * 
+ * @return res    Output after doing the XOR of input 1 and input 2
+*/
 int xor(int a, int b) {
     int res = 0;
 
@@ -24,9 +33,3 @@ int xor(int a, int b) {
     }
     return res;
 }
-
-/**
- * 1001 ^ 1001 = 0000
- * 1100 ^ 0000 = 1100
- * 010001 ^ 000011 = 010010 -> 18
-*/
