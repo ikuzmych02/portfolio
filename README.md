@@ -5,7 +5,7 @@ to implement an ARM 5-Stage Pipelined processor.
 I have also included .arm files which I used to confirm my implementation was functional, as well
 as my runlab.do and pipelined_wave.do simulation files which can be run with ModelSim
 
-All of the stages are broken up into source files like this:
+All of the stages are broken up into source files as follows:
 
 ## if_id.sv
 This SV file contains the code necessary to create the Instruction Fetch stage of my ARM pipelined CPU
