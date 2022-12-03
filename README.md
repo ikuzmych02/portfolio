@@ -1,34 +1,39 @@
-# Welcome to my code portfolio!
-My name is Illya Kuzmych and I am a senior at the University of Washington in Seattle Washington
-In this repository you will find code I have written and utilized for a variety of projects.
+# ARM Pipelined CPU
+
+In this branch, I have my entire codebase written in SystemVerilog
+to implement an ARM 5-Stage Pipelined processor.
+I have also included .arm files which I used to confirm my implementation was functional, as well
+as my runlab.do and pipelined_wave.do simulation files which can be run with ModelSim
+
+All of the stages are broken up into source files like this:
+
+## if_id.sv
+This SV file contains the code necessary to create the Instruction Fetch stage of my ARM pipelined CPU
+
+## id.sv
+This SV file contains the code necessary to create the Instruction Decode stage of my ARM pipelined CPU.
+This stage contains all of the logic for branching, the register file, and takes in the control signals
+from the instruction that is being sent in by the register from Instruction Fetch stage. It also writes
+the Write-Back, Memory, and execute control signals to registers
+
+## ex.sv
+This SV file contains the code necessary to create the Execute stage of my ARM pipelined CPU.
+This stage contains the ALU, as well as the multiplexers in front of the A and B inputs to the ALU,
+with the control signals for the MUXes being sent in by the forwarding unit, and the ALU operation code
+being read from the register which contains it from the Instruction Decode stage. It also writes
+the Write-Back and Memory control signals from the Instruction Decode stage to registers.
+
+## memstage.sv
+This SV file contains the code necessary to create the Memory stage of my ARM pipelined CPU.
+The MemWrite, MemRead control signals are read from the registers being sent out from the Execute stage.
+The output of the ALU is wired to the address input of data memory block, and ReadData2 from the register file
+is wired to the data input of the data memory block.
+This stage contains the Data Memory block, and sents the output of the ALU register from the Execute
+stage into the forwarding unit. It also writes the Write-back signals from the Execute stage to registers.
+
+## wb.sv
+This is the final stage in my ARM pipelined CPU. It is responsible for the WriteBack operations,
+including sending the WriteData to the forwarding unit. The WriteRegister is directly
+wired to the register file in id.sv
 
 
-## Here is what each branch is and what is contained within it:
-
-## Single-cycle CPU
-  This branch contains code written in SystemVerilog that includes all the functionality necessary for a basic, 64-bit single-cycle CPU, including the register file,     ALU, branching, data memory, instruction memory, and the program counter
-
-## C-algorithms:
-  In this branch, I have many different embedded system related C algorithms. For example,
-  an algorithm that counts the number of set bits in an integer, or an algorithm which reverses every pair of bits in an integer
-  
-## Frogger
-  In this branch, I have the code-base for my "Frogger" project implemented with a DE1_SoC
-  FPGA. This code is entirely in SystemVerilog and utilizes logic gates and LED drivers to create the game!
-  
-## Mazes
-  In this branch, I have the code-base for an algorithmic maze solver. First, we carve out a maze utilizing Kruskal's Maze Carver. We then utilize Dijkstra's to find the   shortest, existing path
-  
-## Pong
-  In this branch, I have the code-base for a project which focused on implementing algorithms on hardware (DE1_SoC FPGA) to implement a user-controlled game. We utilized   Bresenham's line algorithm to map out the trajectory of the pong ball, and a custom detection algorithm to change the trajectory/slope of the ball on impact with the     user-controlled paddles which were controlled by an 8-bit Nintendo controller
-
-## Proximity Sensor
-  In this branch, I have the code and freeRTOS drivers for Arduino which we utilized to build a fail-safe proximity sensor system for construction workers who work in     the dark. We utilized task creation and a pre-emptive scheduler to assign task priorities and build our task schedule.
-
-## Rational Number Calculator
-  This branch contains C++ code for a rational number calculator. 
-
-## Simple Poker Game
-  This branch contains C code and logic to implement a basic poker game, including deck shuffling and hand detection.
-  
-  
