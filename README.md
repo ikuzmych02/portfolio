@@ -1,2 +1,2 @@
-Illya Kuzmych @ University of Washington
-ECE Class of 2023
+## Arduino Microcontroller Proximity Sensor
+
