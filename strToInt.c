@@ -1,5 +1,7 @@
 #include "Helpers.h"
 
+int strToInt(char* str);
+
 /**
  * Main loop that takes inputs from
  * user over command line and uses those.
@@ -15,7 +17,7 @@ int main(int argc, char** argv) {
     for (i = 1; i < argc; i++) {
         printf("%d\t", strToInt(argv[i]));
     }
-    //i = strToInt("123");
+    
     return 0;
 }
 
@@ -29,6 +31,13 @@ int main(int argc, char** argv) {
 */
 int strToInt(char* str) {
     int res = 0;
+
+    // If our string starts with an alpha-numeric character,
+    // return 0
+    if (str[0] < 48 || str[0] > 57) {
+        return 0;
+    }
+
     for (int i = 0; i < strlen(str); i++) {
         res += (str[strlen(str) - 1 - i] - '0') * pow(10, i);
     }
