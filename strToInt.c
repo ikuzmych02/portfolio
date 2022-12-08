@@ -6,7 +6,7 @@ int strToInt(char* str);
  * Main loop that takes inputs from
  * user over command line and uses those.
  * 
- * @param argc Argument count
+ * @param argc Argument count, including the executable
  * @param argv Array of char pointers (array of strings)
  *
  * @return 0 Function exited successfully
