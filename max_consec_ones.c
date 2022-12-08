@@ -18,29 +18,25 @@ int main() {
  * This function takes an integer input and counts maximum amount of consecutive
  * bits in the binary representation of the number
  * 
- * @param input   Integer input
+ * @param input          Integer input
  * 
- * @return        Count of max consecutive ones
+ * @return maximum       Count of max consecutive ones
 */
 int countConsecutiveOnes(int input) {
     int count = 0;
-    int max = 0;
+    int maximum = 0;
     
     int i;
     for (i = 0; i < sizeof(int) * 8; i++) {
         if (((input >> i) & ONE_MASK) == 1) {
             count++;
         } else {
-            if (count > max) {
-                max = count;
-            }
+            maximum = max(count, maximum);
             count = 0;
         }
 
-        if (count > max) {
-            max = count;
-        }
+        maximum = max(count, maximum);
     }
     
-    return max;
+    return maximum;
 }

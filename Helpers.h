@@ -9,5 +9,8 @@
 
 #define MK_VAR(n) result##n
 #define ONE_MASK 0x00000001
+#define max(x, y) (x > y) ? x : y
+
+
 
 #endif // HELPERS

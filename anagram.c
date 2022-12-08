@@ -2,12 +2,18 @@
 
 #define NO_OF_CHARS 256  // total number of different characters in C
 #define BOOL int
+#define IS_ANAGRAM     1
+#define IS_NOT_ANAGRAM 0
 
 BOOL areAnagrams(char *str1, char *str2);
 
 int main(int argc, char** argv) {
 
-    areAnagrams(argv[1], argv[2]) ? printf("Your inputs are anagrams!") : printf("Your inputs are not anagrams!");
+    if (argc != 3) {
+        printf("Please try again!");
+        return 1;
+    }
+    areAnagrams(argv[1], argv[2]) ? printf("Your inputs are anagrams!") : printf("Your inputs are NOT anagrams!");
 
     return 0;
 }
@@ -16,15 +22,15 @@ int main(int argc, char** argv) {
  * This function takes in two strings and checks if
  * they are anagrams of one another
  * 
- * @param str1     First input string
- * @param str2     Second input string
+ * @param str1                  First input string
+ * @param str2                  Second input string
  * 
- * @return 0       The strings are NOT anagrams
- * @return 1       The strings are anagrams
+ * @return IS_NOT_ANAGRAM       The strings are NOT anagrams
+ * @return IS_ANAGRAM           The strings are anagrams
 */
 BOOL areAnagrams(char *str1, char *str2) {
     if (strlen(str1) != strlen(str2)) {
-        return 0;
+        return IS_NOT_ANAGRAM;
     }
 
     int count1[NO_OF_CHARS] = { 0 };
@@ -43,9 +49,9 @@ BOOL areAnagrams(char *str1, char *str2) {
     // compare the count arrays
     for (i = 0; i < NO_OF_CHARS; i++) {
         if (count1[i] != count2[i]) {
-            return 0;
+            return IS_NOT_ANAGRAM;
         }
     }
 
-    return 1;
+    return IS_ANAGRAM;
 }
